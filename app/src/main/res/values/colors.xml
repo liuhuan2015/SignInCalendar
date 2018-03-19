@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffff</color>
+    <color name="pressed_color">#60C0C0C0</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="usergender_red">#FF0000</color>
+
+    <color name="usergender_white">#FFFFFF</color>
+
+    <color name="province_line_border">#C7C7C7</color>
+
+    <color name="orange_dark_light">#FFE499</color>
+
+    <color name="blue_btn">#07AAF5</color>
+
+</resources>
