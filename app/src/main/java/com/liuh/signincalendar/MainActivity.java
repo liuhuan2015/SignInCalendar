@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.usersignin_data_mviewpager)
     ViewPager mViewPager;
 
+    @BindView(R.id.user_signin_data_cur_title)
+    TextView data_cur_title;
+
     private MyAdapter mAdapter;
 
     private Bundle bundle = new Bundle();
@@ -31,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
     private int sysCurMonth;
     private int sysCurYear;
 
+    public int month, year;
+
+    public static int day;
+
+    private String date_today_chinese;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +63,19 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
 
         String date1 = sdf.format(now_Data);
-        sysCurYear = Integer.parseInt(date1.substring(0, 4));
+        year = Integer.parseInt(date1.substring(0, 4));
+        sysCurYear = year;
 
-        sysCurMonth = Integer.parseInt(date1.substring(5));
+        month = Integer.parseInt(date1.substring(5));
+        sysCurMonth = month;
 
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
         String date_today = sdf2.format(now_Data);
-        sysCurDay = DateUtil.getTodayPosition(date_today);
+        int todayPosition = DateUtil.getTodayPosition(date_today);
+        day = todayPosition;
+        sysCurDay = todayPosition;
+        date_today_chinese = year + "年" + month + "月" + day + "日";
+        changeTitle(date_today_chinese);
     }
 
     private void initListener() {
@@ -80,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void changeTitle(String bookInTitle) {
+        data_cur_title.setText(bookInTitle);
     }
 
     class MyAdapter extends FragmentStatePagerAdapter {
